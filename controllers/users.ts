@@ -34,8 +34,6 @@ export const postUser = (req: Request, res: Response ) => {
     try {
         const {body} = req;
         
-        console.log(body);
-        
         res.json({
             ok: true,
             msg: 'postUser',
