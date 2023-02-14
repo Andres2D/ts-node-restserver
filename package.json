@@ -6,9 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.ts",
-    "build": "tsc -p tsconfig.json",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
     "start": "node dist/app.js"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,6 +30,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^4.1.2"
   }
 }
